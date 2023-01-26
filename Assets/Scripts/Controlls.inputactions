@@ -9,7 +9,7 @@
                     "name": "Move",
                     "type": "Value",
                     "id": "cf8b9a6e-8951-411f-a785-6c82fd92b6a2",
-                    "expectedControlType": "Axis",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -36,19 +36,8 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "9b3aa02b-f4e7-4a41-8689-32826a1dfc41",
-                    "path": "<AndroidJoystick>/stick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "be643671-d78e-4960-80d5-e5d61d579143",
-                    "path": "<AndroidGamepad>/start",
+                    "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -59,11 +48,22 @@
                 {
                     "name": "",
                     "id": "e38feb1a-fede-42dc-a0ca-2c1f5cad4687",
-                    "path": "<AndroidGamepad>/select",
+                    "path": "<Gamepad>/select",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "RestartGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fe711577-b5f0-42f6-bc35-ba1dfc54c2eb",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
