@@ -9,6 +9,7 @@ public class GameLifeManager : MonoBehaviour
     [SerializeField] private GameObject StartBtn;
     [SerializeField] private GameObject RestartBtn;
     [SerializeField] private TrackSpawner _trackSpawner;
+    [SerializeField] private PlayerMovement _playerMoveMent;
 
     public bool IsGameRunning { get; private set; }
 
@@ -16,8 +17,9 @@ public class GameLifeManager : MonoBehaviour
         IsGameRunning = true;
         StartBtn.SetActive(false);
         MoveJoystick.SetActive(true);
-
-        StartCoroutine(_trackSpawner.StartMoving());
+        
+        StartCoroutine(_playerMoveMent.Movement());
+        // StartCoroutine(_trackSpawner.StartMoving());
     }
     
     public void RestartGame() {
