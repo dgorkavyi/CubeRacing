@@ -18,7 +18,7 @@ public class TrackSpawner : MonoBehaviour
         {
             Track track = Instantiate(StartRoad);
             track.transform.parent = transform;
-            track.SetNextPos();
+            track.SetNextPos(GetComponent<ObstaclePool>());
             _trackList.Add(track);
         }
     }
@@ -31,7 +31,7 @@ public class TrackSpawner : MonoBehaviour
 
             Track nextLastTrack = _trackList.First();
             List<Track> nextTrackList = _trackList.Skip(1).ToList();
-            nextLastTrack.SetNextPos();
+            nextLastTrack.SetNextPos(GetComponent<ObstaclePool>());
             _trackList = nextTrackList.Append(nextLastTrack).ToList();
         }
     }
