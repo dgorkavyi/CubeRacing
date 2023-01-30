@@ -12,6 +12,8 @@ public class GameLifeManager : MonoBehaviour
     [SerializeField] private ParticleSystem WarpEffect;
     [SerializeField] private TrackSpawner _trackSpawner;
     [SerializeField] private PlayerMovement _playerMoveMent;
+    [SerializeField] private Timer _timer;
+    private Coroutine _timerCoroutine;
     private Coroutine _movement;
     private Coroutine _trackMoving;
     private static GameLifeManager _instance;
@@ -26,6 +28,7 @@ public class GameLifeManager : MonoBehaviour
         MoveJoystick.SetActive(true);
         JumpBtn.SetActive(true);
         
+        _timerCoroutine = StartCoroutine(_timer.StartTimer());
         _movement = StartCoroutine(_playerMoveMent.Movement());
         _trackMoving = StartCoroutine(_trackSpawner.StartMoving());
     }
@@ -37,6 +40,7 @@ public class GameLifeManager : MonoBehaviour
     public static void Defeat() {
         _instance.StopCoroutine(_instance._movement);
         _instance.StopCoroutine(_instance._trackMoving);
+        _instance.StopCoroutine(_instance._timerCoroutine);
         _instance.RestartBtn.SetActive(true);
         _instance.JumpBtn.SetActive(false);
         _instance.MoveJoystick.SetActive(false);
