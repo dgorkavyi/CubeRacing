@@ -8,6 +8,8 @@ public class GameLifeManager : MonoBehaviour
     [SerializeField] private GameObject StartBtn;
     [SerializeField] private GameObject RestartBtn;
     [SerializeField] private GameObject JumpBtn;
+    [SerializeField] private GameObject DefeatScreen;
+    [SerializeField] private ParticleSystem WarpEffect;
     [SerializeField] private TrackSpawner _trackSpawner;
     [SerializeField] private PlayerMovement _playerMoveMent;
     private Coroutine _movement;
@@ -29,8 +31,7 @@ public class GameLifeManager : MonoBehaviour
     }
     
     public void RestartGame(InputAction.CallbackContext context) {
-        // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        Application.LoadLevel(0);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public static void Defeat() {
@@ -39,6 +40,8 @@ public class GameLifeManager : MonoBehaviour
         _instance.RestartBtn.SetActive(true);
         _instance.JumpBtn.SetActive(false);
         _instance.MoveJoystick.SetActive(false);
+        _instance.DefeatScreen.SetActive(true);
+        _instance.WarpEffect.Stop();
     }
 
     private void Awake() {
@@ -46,5 +49,7 @@ public class GameLifeManager : MonoBehaviour
         RestartBtn.SetActive(false);
         MoveJoystick.SetActive(false);
         JumpBtn.SetActive(false);
+        DefeatScreen.SetActive(false);
+        _instance.WarpEffect.Play();
     }
 }
