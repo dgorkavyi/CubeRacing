@@ -16,6 +16,7 @@ public class TrackSpawner : MonoBehaviour
     private List<Track> _trackList = new();
     private float _lastPos = 0;
     private float _step = 30f;
+
     private void IncreasePos() => _lastPos += _step;
 
     private void Awake()
@@ -29,7 +30,8 @@ public class TrackSpawner : MonoBehaviour
             _trackList.Add(track);
         }
 
-        _trackList.ForEach(track => {
+        _trackList.ForEach(track =>
+        {
             track.SetNextPos(_pool, _lastPos);
             IncreasePos();
         });
@@ -44,6 +46,7 @@ public class TrackSpawner : MonoBehaviour
             Track nextLastTrack = _trackList.First();
             List<Track> nextTrackList = _trackList.Skip(1).ToList();
             nextLastTrack.SetNextPos(_pool, _lastPos);
+            IncreasePos();
             _trackList = nextTrackList.Append(nextLastTrack).ToList();
         }
     }
