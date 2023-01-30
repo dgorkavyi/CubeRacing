@@ -8,14 +8,13 @@ public class PlayerMovement : MonoBehaviour
     private float _rollSpeed = 5;
 
     [SerializeField]
-    private float _maxLeft = -2f;
-
-    [SerializeField]
-    private float _maxRight = 2f;
+    private Rigidbody rb;
 
     [SerializeField]
     private PlayerInput _input;
     private bool _isMoving;
+    private bool _isCooldown;
+    private float _cooldownTime = 2f;
 
     public IEnumerator Movement()
     {
@@ -25,29 +24,54 @@ public class PlayerMovement : MonoBehaviour
 
             if (isMovingLeftRight)
             {
-                yield return new WaitForFixedUpdate();
-
                 Vector2 input = _input.actions["Move"].ReadValue<Vector2>();
                 Vector3 move = Vector3.right * input.x;
                 transform.Translate(move * _rollSpeed * Time.deltaTime);
+                yield return new WaitForFixedUpdate();
             }
 
             if (!_isMoving)
             {
-                var anchor = transform.position + (Vector3.down + Vector3.forward) * 0.5f;
-                var axis = Vector3.Cross(Vector3.up, Vector3.forward);
-                _isMoving = true;
-
-                for (var i = 0; i < 90 / _rollSpeed; i++)
-                {
-                    transform.RotateAround(anchor, axis, _rollSpeed);
-                    yield return new WaitForSeconds(0.01f);
-                }
-
-                _isMoving = false;
+                Assemble(Vector3.forward);
             }
 
             yield return null;
         }
+    }
+
+    private void Assemble(Vector3 dir)
+    {
+        var anchor = transform.position + (Vector3.down + dir) * 0.5f;
+        var axis = Vector3.Cross(Vector3.up, dir);
+        StartCoroutine(Roll(anchor, axis));
+    }
+
+    private IEnumerator Roll(Vector3 anchor, Vector3 axis)
+    {
+        _isMoving = true;
+        for (var i = 0; i < 90 / _rollSpeed; i++)
+        {
+            transform.RotateAround(anchor, axis, _rollSpeed);
+            yield return new WaitForFixedUpdate();
+        }
+        _isMoving = false;
+    }
+
+    public void Jump(InputAction.CallbackContext context)
+    {
+        if (!context.ReadValueAsButton() || _isCooldown)
+            return;
+
+        StartCoroutine(StartCooldown(_cooldownTime));
+        Debug.Log(!context.ReadValueAsButton());
+        Debug.Log(_isCooldown);
+        rb.AddForce(new Vector3(0, 20), ForceMode.Impulse);
+    }
+
+    public IEnumerator StartCooldown(float time)
+    {
+        _isCooldown = true;
+        yield return new WaitForSeconds(time);
+        _isCooldown = false;
     }
 }

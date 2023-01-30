@@ -15,10 +15,19 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Jump",
+                    "type": "Value",
+                    "id": "80e3b2f4-1194-4524-a488-d773519a2966",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "StartGame",
                     "type": "Value",
                     "id": "e411101e-3866-4d10-97fb-8ab86af1a2d9",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Double",
                     "processors": "",
                     "interactions": "Tap",
                     "initialStateCheck": true
@@ -27,7 +36,7 @@
                     "name": "RestartGame",
                     "type": "Value",
                     "id": "485d620f-2c60-4d90-807c-dcd028ee8fff",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Double",
                     "processors": "",
                     "interactions": "Tap",
                     "initialStateCheck": true
@@ -64,6 +73,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ee376a3f-a4c4-4b37-b446-399e5e9cd556",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
