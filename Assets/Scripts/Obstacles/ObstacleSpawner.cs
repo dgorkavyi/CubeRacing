@@ -7,15 +7,15 @@ public class ObstacleSpawner : MonoBehaviour
 
     public void Spawn(ObstaclePool pool)
     {
-        if (_currentObstacle != null) {
-            Destroy(_currentObstacle.gameObject);
-        }
+        // if (_currentObstacle != null) {
+        //     Destroy(_currentObstacle.gameObject);
+        // }
 
-        int index = Random.Range(0, pool.Obstacles.Count);
-        _pos = Vector3.zero;
+        // int index = Random.Range(0, pool.Obstacles.Count);
+        // _pos = Vector3.zero;
 
-        _currentObstacle = Instantiate<Obstacle>(pool.Obstacles[index]);
-        _currentObstacle.transform.parent = transform;
-        _currentObstacle.transform.localPosition = _pos;
+        // _currentObstacle = Instantiate<Obstacle>(pool.Obstacles[index]);
+        // _currentObstacle.transform.parent = transform;
+        // _currentObstacle.transform.localPosition = _pos;
     }
 }

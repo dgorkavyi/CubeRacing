@@ -185,6 +185,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _obstacles:
+  - {fileID: 523292685048687686, guid: 547492ff4d715cc48bc730c8d248b671, type: 3}
+  - {fileID: 523292685048687686, guid: 3487853dcbb51b44ca40270d7bb5efdc, type: 3}
+  - {fileID: 523292685048687686, guid: d9b8e846e856588428fb83f38eb7fee4, type: 3}
+  - {fileID: 523292685048687686, guid: 9daf8468f830912489442d682744acb9, type: 3}
   - {fileID: 523292685048687686, guid: d0fd2c84fcf8a184e9628094edc0d26a, type: 3}
 --- !u!1 &277586513
 GameObject:
@@ -1061,6 +1065,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1797590329}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &1797590332 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7853053968035830552, guid: a13ee35630b4bc2478b0b170bb3c94ea,
+    type: 3}
+  m_PrefabInstance: {fileID: 1797590329}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1813101320
 GameObject:
   m_ObjectHideFlags: 0
@@ -1474,6 +1484,7 @@ MonoBehaviour:
   RestartBtn: {fileID: 780363481}
   JumpBtn: {fileID: 277586513}
   DefeatScreen: {fileID: 1898516407}
+  WarpEffect: {fileID: 1797590332}
   _trackSpawner: {fileID: 188481685}
   _playerMoveMent: {fileID: 1986663728}
 --- !u!114 &1889647504
